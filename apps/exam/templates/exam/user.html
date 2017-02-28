@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User</title>
+    {%load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{%static 'exam/css/master.css'%}">
+  </head>
+  <body>
+    <div class="nav">
+      <ul>
+        <li><a href="/quotes">Dashboard</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+    <h3>Posts by {{user.name}}</h3>
+    <h4>Count: {{count}}</h4>
+    {%for quote in quotes%}
+      <p><strong>{{quote.quote.user.name}}</strong>: {{quote.quote.content}}</p>
+    {%empty%}
+      <p>No favorite quotes</p>
+    {%endfor%}
+  </body>
+</html>

@@ -1,0 +1,67 @@
+*{
+  font-family: Arial;
+}
+fieldset{
+  width:47%;
+  display:inline-block;
+  vertical-align: top;
+}
+.error{
+  color:red;
+}
+.success{
+  color:green;
+}
+.fity-me{
+  width: 100%;
+  height: 300px;
+  overflow: scroll;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 10px;
+}
+.box-cons{
+  width:47%;
+  display:inline-block;
+  vertical-align:top;
+  padding: 10px;
+}
+.section-title{
+  width:47%;
+  display:inline-block;
+  vertival-align:top;
+}
+.nav ul{
+  text-align:right;
+}
+.nav li{
+  display:inline-block;
+}
+.quotes{
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+.quotes span{
+  font-size:14px;
+}
+.q-by{
+  font-size:12px;
+  width:75%;
+  display:inline-block;
+  vertical-align: top;
+}
+.quotes form{
+  width:23%;
+  display:inline-block;
+  margin:12px 0;
+}
+#add-form{
+  width: 300px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  color:white;
+  padding:10px;
+}
+#add-form textarea{
+  margin-top:10px;
+}

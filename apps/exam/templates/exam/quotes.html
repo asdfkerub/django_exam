@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Quotes</title>
+    {%load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{%static 'exam/css/master.css'%}">
+  </head>
+  <body>
+    <div class="nav">
+      <ul>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+    <h3>Welcome {{user.name}}</h3>
+    {%if messages%}
+      {%for message in messages%}
+        <p class="{{message.tags}}">{{message}}</p>
+      {%endfor%}
+    {%endif%}
+    <div class='box-cons'>
+      <h3>Quotable Quotes</h3>
+      <div class='fity-me'>
+        {%for quote in quotes%}
+          <div class="quotes">
+            <p>{{quote.name}}: <span>{{quote.content}}</span></p>
+            <p class='q-by'>Posted By: <a href='/users/{{quote.user.id}}'>{{quote.user.name}}</a></p>
+            <form action='/add/favorite/{{quote.id}}' method='POST'>
+              {%csrf_token%}
+              <input type="submit" value="Add to Fave">
+            </form>
+          </div>
+        {%empty%}
+          <p>No quotes or ALL quotes are favorited by you</p>
+        {%endfor%}
+      </div>
+    </div>
+    <div class='box-cons'>
+      <h3>My Favorites Quotes</h3>
+      <div class="fity-me">
+        {%for fave in favorites%}
+          <div class="quotes">
+            <p>{{fave.quote.name}}: <span>{{fave.quote.content}}</span></p>
+            <p class='q-by'>Posted By: <a href='/users/{{fave.quote.user.id}}'>{{fave.quote.user.name}}</a></p>
+            <form action='/remove/favorite/{{fave.quote.id}}' method='POST'>
+              {%csrf_token%}
+              <input type="submit" value="Remove from Fave">
+            </form>
+          </div>
+        {%empty%}
+          <p>No favorited quote</p>
+        {%endfor%}
+      </div>
+    </div>
+    <div id='add-form'>
+      <h4>Contribute a Quote:</h4>
+      <form action='/add/quote' method="post">
+        {%csrf_token%}
+        Quote By: <input type="text" name='quote_by'><br>
+        Message: <textarea name='message'></textarea><br>
+        <input type="submit" value="submit">
+      </form>
+    </div>
+  </body>
+</html>
